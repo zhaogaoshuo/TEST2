@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!--	项目的打包方式：1.pom类型 当父级项目 2.jar 工具包 3.war JavaWeb项目，可以运行在容器中-->
+    <packaging>pom</packaging>
+    <!--	1.子项目-->
+    <modules>
+        <module>SignCloud_Common</module>
+        <module>SignCloud_Gateway</module>
+        <module>SignCloud_SignProvider</module>
+        <module>SignCloud_SignApi</module>
+    </modules>
+    <!--	2.继承SpringBoot-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.4</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.feri.sign</groupId>
+    <artifactId>signcloud</artifactId>
+    <version>1.0</version>
+    <name>SignCloud</name>
+    <description>SpringCloudalibaba实现签到服务，展示核心组件的应用</description>
+    <!--	3.Jar版本声明-->
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>2020.0.3</spring-cloud.version>
+    </properties>
+    <!--	4.公共依赖，根项目的依赖，会让所有的子项目都拥有-->
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <!--	5.jar包的版本限定-->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
